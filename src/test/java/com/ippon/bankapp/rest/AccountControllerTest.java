@@ -50,7 +50,7 @@ class AccountControllerTest {
 
     @Test
     public void testAccountRetrieval_AccountExists() throws Exception {
-        given(accountService.getAccount("Scott"))
+        given(accountService.getAccountDTOByLastName("Scott"))
                 .willReturn(new AccountDTO()
                         .lastName("Scott")
                         .firstName("Ben"));
@@ -64,7 +64,7 @@ class AccountControllerTest {
 
     @Test
     public void testAccountRetrieval_AccountDoesNotExist() throws Exception {
-        given(accountService.getAccount("Scott"))
+        given(accountService.getAccountDTOByLastName("Scott"))
                 .willThrow(new AccountNotFoundException());
 
         String errorMessage = mockMvc

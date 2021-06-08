@@ -1,7 +1,10 @@
 package com.ippon.bankapp.domain;
 
+import com.ippon.bankapp.service.dto.TransactionDTO;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,13 +27,15 @@ public class Account {
     @Column(name = "notification_preference")
     private String notificationPreference;
 
+    @OneToMany(mappedBy = "account")
+    private List<Transaction> transactionList;
+
     public Account() {}
 
     public Account(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = BigDecimal.ZERO;
-
     }
 
     public BigDecimal getBalance() {
@@ -61,6 +66,10 @@ public class Account {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNotificationPreference() {
         return notificationPreference;
     }
@@ -68,6 +77,14 @@ public class Account {
     public void setNotificationPreference(String notificationPreference) {
         this.notificationPreference = notificationPreference;
     }
+
+//    public List<Transaction> getTransactionList() {
+//        return transactionList;
+//    }
+//
+//    public void setTransactionList(List<Transaction> transactionList) {
+//        this.transactionList = transactionList;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,2 +1,4 @@
-package com.ippon.bankapp.service.exception;public class InsufficientFundsException {
+package com.ippon.bankapp.service.exception;
+
+public class InsufficientFundsException extends BankAppException{
 }

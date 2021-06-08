@@ -10,5 +10,7 @@ public interface AccountRepository  extends CrudRepository<Account, String> {
 
     Optional<Account> findByLastName(String lastName);
 
+    Optional<Account> findByFirstName(String firstName);
+
     Optional<Account> findById(int id);
 }

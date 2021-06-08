@@ -120,9 +120,9 @@ public class AccountService {
      * Determines if a deposit is valid. A deposit is valid iff the account's daily deposit total added to the new
      * deposit amount is less than the daily deposit limit which is $5,000
      *
-     * @param lastName last name of account being deposited to
-     * @param depositAmount amount being deposited
-     * @return a boolean containing if the deposit is valid or not
+     * @param lastName          last name of account being deposited to
+     * @param depositAmount     amount being deposited
+     * @return                  a boolean containing if the deposit is valid or not
      */
     private boolean isValidDeposit(String lastName, BigDecimal depositAmount) {
         final BigDecimal DEPOSIT_LIMIT = BigDecimal.valueOf(5000);
@@ -194,8 +194,8 @@ public class AccountService {
     /**
      * Gets the most recent ten transactions from an account
      *
-     * @param lastName last name of account to find transactions of
-     * @return list containing transactionDTOs for ten most recent transactions
+     * @param lastName  last name of account to find transactions of
+     * @return          list containing transactionDTOs for ten most recent transactions
      */
     public List<TransactionDTO> getLatestTenTransaction(String lastName) {
         Account account = getAccountByLastName(lastName);
@@ -211,8 +211,8 @@ public class AccountService {
     /**
      * Maps a list of transactions to a list of transactionDTOs
      *
-     * @param allTransactions list of transactions
-     * @return list of transactionDTOs
+     * @param allTransactions   list of transactions
+     * @return                  list of transactionDTOs
      */
     public List<TransactionDTO> mapTransactionListToDTOList(List<Transaction> allTransactions) {
         List<TransactionDTO> transactionDTOList = new ArrayList<>();
@@ -225,16 +225,12 @@ public class AccountService {
     /**
      * Maps a transaction to a transactionDTO
      *
-     * @param transaction
-     * @return
+     * @param transaction   transaction to map
+     * @return              mapped transaction in DTO format
      */
     private TransactionDTO mapTransactionToDTO(Transaction transaction) {
         TransactionDTO transactionDTO = new TransactionDTO(transaction.getType(), transaction.getAmount());
         return transactionDTO;
-    }
-
-    public void saveAccount(Account account) {
-        accountRepository.save(account);
     }
 
 }
